@@ -17,6 +17,6 @@ argocdapp:
         helm:
           valueFiles:
             - $values/environments/dev/gen3-values.yaml
-      - repoURL: 'https://github.com/flashguerdon/gen3-workloads-example.git'
+      - repoURL: 'https://github.com/AustralianBioCommons/gen3-workloads-example.git'
         targetRevision: main
         ref: values
