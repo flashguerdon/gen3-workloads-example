@@ -50,6 +50,21 @@ fence:
     # This is important for data upload.
     DATA_UPLOAD_BUCKET: 'jq-helm-testing'
 
+portal:
+  image:
+    repository: quay.io/cdis/data-portal
+    tag: "master"
+    pullPolicy: Always
+  enabled: true
+  dictionaryUrl: https://s3.amazonaws.com/dictionary-artifacts/datadictionary/develop/schema.json
+  resources:
+    requests:
+      cpu: 2.0
+      memory: 8192Mi
+    limits:
+      cpu: 2.0
+      memory: 8192Mi
+
 pelican:
   enabled: false
 
