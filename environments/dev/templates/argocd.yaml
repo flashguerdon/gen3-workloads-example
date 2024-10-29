@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    alb.ingress.kubernetes.io/backend-protocol-version: HTTP2
+  labels:
+    app: argogrpc
+  name: argogrpc
+  namespace: argocd
+spec:
+  ports:
+  - name: "80"
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/name: argocd-server
+  sessionAffinity: None
+  type: LoadBalancer
+
+--- 
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   annotations:
+#     alb.ingress.kubernetes.io/scheme: internal
+#     alb.ingress.kubernetes.io/certificate-arn: {{ .Values.argoCdCertificateArn }}
+#     meta.helm.sh/release-name: blueprints-addon-argocd
+#     meta.helm.sh/release-namespace: argocd
+#     alb.ingress.kubernetes.io/backend-protocol: HTTPS
+#     kubernetes.io/ingress.class: alb
+#     # Use this annotation (which must match a service name) to route traffic to HTTP2 backends.
+#     alb.ingress.kubernetes.io/conditions.argogrpc: |
+#       [{"field":"http-header","httpHeaderConfig":{"httpHeaderName": "Content-Type", "values":["application/grpc"]}}]
+#     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+#   name: argocd
+#   namespace: argocd
+# spec:
+#   rules:
+#   - host: {{ .Values.argocdHostname }}
+#     http:
+#       paths:
+#       - path: /
+#         backend:
+#           service:
+#             name: argogrpc
+#             port:
+#               number: 443
+#         pathType: Prefix
+#       - path: /
+#         backend:
+#           service:
+#             name: blueprints-addon-argocd-server
+#             port:
+#               number: 443
+#         pathType: Prefix
+#   tls:
+#   - hosts:
+#     - {{ .Values.argocdHostname }}
+

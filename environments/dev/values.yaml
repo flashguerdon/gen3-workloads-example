@@ -11,13 +11,12 @@ argocdapp:
     project: cad
     namespace: cad
     sources:
-      - repoURL: 'git@github.com:uc-cdis/gen3-helm.git'
+      - repoURL: 'https://github.com/uc-cdis/gen3-helm.git'
         path: helm/gen3
-        targetRevision: main
+        targetRevision: master
         helm:
           valueFiles:
             - $values/environments/dev/gen3-values.yaml
-            - $values/environments/dev/secrets-values.yaml
-      - repoURL: 'git@github.com:flashguerdon/gen3-workloads-example.git'
+      - repoURL: 'https://github.com/flashguerdon/gen3-workloads-example.git'
         targetRevision: main
         ref: values
