@@ -50,7 +50,8 @@ fence:
     # This is important for data upload.
     DATA_UPLOAD_BUCKET: 'jq-helm-testing'
 
-
+pelican:
+  enabled: false
 
 # -- (map) To configure postgresql subchart
 # Persistence is disabled by default
