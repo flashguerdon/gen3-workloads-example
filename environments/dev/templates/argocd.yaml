@@ -19,6 +19,10 @@ spec:
   type: LoadBalancer
 
 --- 
+# The manifest below will deploy an internal ALB; requires a cert in ACM
+# Make sure you change the service type above from LoadBalancer to NodePort
+# If using the ALB ingress.
+
 # apiVersion: networking.k8s.io/v1
 # kind: Ingress
 # metadata:

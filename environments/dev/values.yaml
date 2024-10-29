@@ -8,8 +8,8 @@ argocdapp:
   spec:
     destination:
       server: https://kubernetes.default.svc
-    project: cad
-    namespace: cad
+    project: dev
+    namespace: dev
     sources:
       - repoURL: 'https://github.com/uc-cdis/gen3-helm.git'
         path: helm/gen3

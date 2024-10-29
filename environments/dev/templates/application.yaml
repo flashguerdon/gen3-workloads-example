@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: {{ .Values.argocdapp.spec.project | default "default" }}
+  name: {{ include "argocdapp.projectName" . }}
   namespace: argocd
   # Finalizer that ensures that project is not deleted until it is not referenced by any application
   finalizers:
@@ -23,13 +23,13 @@ spec:
       kind: '*'
   sourceNamespaces:
     - "argocd"
-    - "cad"
+    - "dev"
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .Values.argocdapp.spec.name | default "test" }}
-  namespace: {{ .Values.argocdapp.argoNamespace | default "argocd" }}
+  name: {{ include "argocdapp.applicationName" . }}
+  namespace: {{ include "argocdapp.argoNamespace" . }}
   labels:
     {{- toYaml .Values.argocdapp.labels | nindent 4 }}
   finalizers:
@@ -37,12 +37,12 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:
-  project: {{ .Values.argocdapp.spec.project | default "default" }}
+  project: {{ include "argocdapp.projectName" . }}
   destination:
     namespace: {{ .Values.argocdapp.spec.namespace | default "dev" }}
-    server: {{ .Values.argocdapp.destinationServer | default .Values.argocdapp.spec.destination.server }}
+    server: {{ include "argocdapp.destinationServer" . }}
   sources:
-      {{- toYaml .Values.argocdapp.spec.sources | nindent 4 }}
+    {{- toYaml .Values.argocdapp.spec.sources | nindent 4 }}
   syncPolicy:
     automated:
       prune: true
