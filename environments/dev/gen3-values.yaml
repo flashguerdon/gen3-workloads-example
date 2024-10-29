@@ -6,10 +6,10 @@ global:
   # Deploys elasticsearch and postgres in k8s
   dev: true
   # Replace with your dev environment url. 
-  hostname: qureshi.planx-pla.net
+  hostname: devgen3.test.biocommons.org.au
   # this is arn to a certificate in AWS that needs to match the hostname.
   # This one is for *.planx-pla.net
-  revproxyArn: arn:aws:acm:us-east-1:707767160287:certificate/520ede2f-fc82-4bb9-af96-4b4af7deabbd
+  revproxyArn: arn:aws:acm:ap-southeast-2:232870232581:certificate/263d28c1-6e7d-4365-adc2-aa459d7ac847
 
 
 # configuration for fence helm chart. You can add it for all our services.
