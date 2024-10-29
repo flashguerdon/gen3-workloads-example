@@ -60,3 +60,6 @@ postgresql:
     persistence:
       # -- (bool) Option to persist the dbs data.
       enabled: true
+
+sower:
+  enabled: false
