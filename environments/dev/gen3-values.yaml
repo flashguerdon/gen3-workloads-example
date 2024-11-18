@@ -16,7 +16,7 @@ fence:
   # Override image
   image:
     repository: quay.io/cdis/fence
-    tag: automatedCopy-feature_oidc-oauth-groups
+    tag: master
   usersync:
     usersync: true
 
