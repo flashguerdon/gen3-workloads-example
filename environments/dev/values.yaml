@@ -18,5 +18,5 @@ argocdapp:
           valueFiles:
             - $values/environments/dev/gen3-values.yaml
       - repoURL: 'https://github.com/AustralianBioCommons/gen3-workloads-example.git'
-        targetRevision: main
+        targetRevision: fence-testing
         ref: values

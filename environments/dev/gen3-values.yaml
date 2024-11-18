@@ -16,7 +16,7 @@ fence:
   # Override image
   image:
     repository: quay.io/cdis/fence
-    tag: master
+    tag: automatedCopy-feature_oidc-oauth-groups
 
   # Fence config overrides 
   FENCE_CONFIG:
